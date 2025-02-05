@@ -136,6 +136,8 @@ public:
 
         sb_day = new QSpinBox(w_date);
         sb_day->setObjectName("sb_day");
+        sb_day->setMinimum(1);
+        sb_day->setMaximum(31);
 
         horizontalLayout_3->addWidget(sb_day);
 

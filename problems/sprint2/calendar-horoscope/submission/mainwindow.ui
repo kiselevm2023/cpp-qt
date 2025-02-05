@@ -100,7 +100,14 @@
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="sb_day"/>
+        <widget class="QSpinBox" name="sb_day">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>31</number>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="lbl_month">

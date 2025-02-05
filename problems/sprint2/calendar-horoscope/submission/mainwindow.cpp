@@ -46,7 +46,7 @@ void MainWindow::MakeMagic(){
     }
     if(ui->cb_is_date->isChecked()){
         int day = ui->sb_day->value();
-        int month = ui->cb_month->currentIndex() + 1;
+        int month = ui->cb_month->currentIndex()+1;
         if(horoscope_ == Horoscope::kZodiac){
             MakeZodiacHoroscope(day, month);
         }else if (horoscope_ == Horoscope::kDruid) {
@@ -79,7 +79,7 @@ void MainWindow::MakeEasternHoroscope(int year)
 {
     QString animal = GetAnimalForEasternCalendar(year);
     QString element = GetElementForEasternCalendar(year);
-    ui->lbl_calendar->setText(QString("%1 — это год %2. Стихия/цвет — %3.")
+    ui->lbl_calendar->setText(QString("%1 — это год %2. Стихия/цвет — %3")
                                   .arg(year)
                                   .arg(animal)
                                   .arg(element));
@@ -88,13 +88,13 @@ void MainWindow::MakeEasternHoroscope(int year)
 void MainWindow::MakeTibetanHoroscope(int year)
 {
     QString animal = GetAnimalForTibetanCalendar(year);
-    ui->lbl_calendar->setText(QString("%1 — это год %2.").arg(year).arg(animal));
+    ui->lbl_calendar->setText(QString("%1 — это год %2").arg(year).arg(animal));
 }
 
 void MainWindow::MakeZoroastrianHoroscope(int year)
 {
     QString animal = GetAnimalForZoroastrianCalendar(year);
-    ui->lbl_calendar->setText(QString("%1 — это год %2.").arg(year).arg(animal));
+    ui->lbl_calendar->setText(QString("%1 — это год %2").arg(year).arg(animal));
 }
 
 void MainWindow::MakeZodiacHoroscope(int day, int month)
@@ -105,7 +105,7 @@ void MainWindow::MakeZodiacHoroscope(int day, int month)
     if (zodiac.isEmpty()) {
         ui->lbl_horoscope->setText("Такой даты не существует");
     } else {
-        ui->lbl_horoscope->setText(QString("%1.%2 — ваш знак зодиака %3 по зодиакальному гороскопу.")
+        ui->lbl_horoscope->setText(QString("%1.%2 — ваш знак зодиака %3 по зодиакальному гороскопу")
                                        .arg(day, 2, 10, QChar('0'))
                                        .arg(m, 2, 10, QChar('0'))
                                        .arg(zodiac));
@@ -119,12 +119,16 @@ void MainWindow::MakeDruidHoroscope(int day, int month)
     if (tree.isEmpty()) {
         ui->lbl_horoscope->setText("Такой даты не существует");
     } else {
-        ui->lbl_horoscope->setText(QString("%1.%2 — ваше тотемное дерево %3 по гороскопу друидов.")
+        ui->lbl_horoscope->setText(QString("%1.%2 — ваше тотемное дерево %3 по гороскопу друидов")
                                        .arg(day, 2, 10, QChar('0'))
                                        .arg(month, 2, 10, QChar('0'))
                                        .arg(tree));
     }
 }
+
+
+
+
 
 void MainWindow::on_rb_tibetan_clicked()
 {
@@ -173,3 +177,4 @@ void MainWindow::on_rb_druid_clicked()
     horoscope_ = Horoscope::kDruid;
     MakeMagic();
 }
+
