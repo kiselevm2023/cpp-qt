@@ -3,7 +3,9 @@
 #include <QMenuBar>
 #include <QMenu>
 #include <QAction>
-#include <QFileDialog>
+#include <prac/QTimer>
+#include <prac/QFileDialog>
+
 
 // Функция подгоняет изображение под нужный размер окна.
 

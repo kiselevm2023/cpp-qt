@@ -5,9 +5,10 @@
 #include <QLabel>
 #include <QPixmap>
 #include <QDir>
-#include <QTimer>
 #include <utility>
 #include <QString>
+#include <prac/QTimer>
+#include <prac/QFileDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
