@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::AddItemsNotification *ui;
+    //AddItemsNotification dialog{this};
+    //dialog.exec();
+
 };
 
 #endif // ADDITEMSNOTIFICATION_H

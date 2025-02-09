@@ -51,6 +51,19 @@ Selector::~Selector()
 void Selector::on_btn_cart_clicked()
 {
     // Напишите этот метод.
+    // Получаем список выбранных товаров
+    std::vector<CartItem> items = GetCartItems();
+
+    // Проверяем, есть ли выбранные товары
+    if (items.empty()) {
+        // Если корзина пуста, показываем окно с уведомлением
+        AddItemsNotification dialog{this};
+        dialog.exec();
+    } else {
+        // Если товары выбраны, показываем окно с корзиной
+        CartWindow dialog{items, this};
+        dialog.exec();
+    }
 }
 
 std::vector<CartItem> Selector::GetCartItems() const {

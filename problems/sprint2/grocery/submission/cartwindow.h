@@ -18,6 +18,7 @@ public:
 
 private:
     Ui::CartWindow *ui;
+    // CartWindow dialog{items, this};
 };
 
 #endif // CARTWINDOW_H

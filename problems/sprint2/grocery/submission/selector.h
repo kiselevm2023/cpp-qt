@@ -39,6 +39,9 @@ private slots:
 private:
     std::vector<CartItem> GetCartItems() const;
     void AddAll(const std::vector<QString>& items);
+    // CartWindow dialog{items, this};
+    // AddItemsNotification dialog{this};
+    // dialog.exec();
 
 private:
     Ui::Selector *ui;
