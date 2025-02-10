@@ -3,10 +3,11 @@
 
 #include <QMainWindow>
 #include <QLabel>
-#include <QPixmap>
+#include <QStringList>
 #include <QDir>
-#include <utility>
-#include <QString>
+#include <QPushButton>
+#include <QMenu>
+#include <QAction>
 #include <prac/QTimer>
 #include <prac/QFileDialog>
 
@@ -16,72 +17,54 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void SetTimerInterval();
 
-    struct Pix {
-        QPixmap act_pix;
-        int pix_index = 0;
-    };
-
-    void SetFolder(const QString& d);
-
-    void FitImage();
-
-    QPixmap GetImageByPath(QString path) const;
-
-    std::pair<QPixmap, int> FindNextImage(int direction);
-
-    QString GetCurrentFile();
-
-    void GoAhead();
-
-    void GoBack();
+    void SetFolder(const QString& folder);  // Moved to public
+    QString GetCurrentFile() const;         // Moved to public
 
 private slots:
+    void SetPixmap(const QString& path);
+    void FitImage();
+    void NextImage();
+    void PrevImage();
+    void UpdateEnabled();
+    void ToggleStayOnTop();
+    void SelectFolder();
+
+    void StartTimer(int interval);
+    void StopTimer();
     void slotCustomMenuRequested(QPoint pos);
 
-    void slotSetWindowStayOnTopHint();
-
-    void slotClose();
-
-    void slotUseResources();
-
-    void slotGetExistingDirectory();
-
-    void slotSetTimerFor1Sec();
-
-    void slotSetTimerFor5Sec();
-
-    void slotSetTimerFor10Sec();
-
-    void slotStopTimer();
-
-    void on_btn_left_clicked();
-
-    void on_btn_right_clicked();
-
 private:
-
-    void slotSetWindowFlags();
-
-    QPixmap ResizeImgToFit(const QPixmap &src, int window_width, int window_height);
-
     void resizeEvent(QResizeEvent *event) override;
+    QPixmap GetImageByPath(const QString& path) const;
+    std::pair<QPixmap, int> FindNextImage(int start_index, int direction) const;
 
 private:
     Ui::MainWindow *ui;
-    Pix pix_;
-    QLabel lbl_new_{this};
-    const QString resources_path_ = ":/cats/images/";
-    QDir dir_;
-    QTimer timer_{this};
-    int period_ = 0;
-    bool state_ = false;
+    QLabel lbl_img{this};
+    QPixmap active_pixmap;
+    QString current_folder_;
+    int cur_file_index_ = 0;
+    QStringList image_files_;
+    prac::QTimer timer_;
+
+    QAction *action_up_windows;
+    QAction *action_use_resources;
+    QAction *action_choose_dir;
+    QAction *action_0sec;
+    QAction *action_1sec;
+    QAction *action_5sec;
+    QAction *action_10sec;
+    //QMenu *menu;
+    //QMenu *menu_2;
 };
-#endif
+
+#endif // MAINWINDOW_H
