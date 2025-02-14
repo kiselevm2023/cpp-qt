@@ -5,10 +5,6 @@
 #include <prac/QPainter>
 #include <cmath>
 
-#include <QColorDialog>
-#include <QPaintEvent>
-
-
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class WinterWindow;
@@ -44,13 +40,12 @@ inline Point2D Add(Point2D l, Vector2D r) {
 
 struct SnowFlakeParams {
     Point2D center;
-    int depth;  // Г
-    double scale_factor;  
-
     QColor color;
     double size;
     double line_width;
     double rotation;
+    int depth;
+    double scale_factor;
 };
 
 class SnowFlake {
@@ -59,83 +54,51 @@ public:
 
     }
 
-/* void Draw(prac::QPainter& painter) const {
-        QPen pen(params_.color, params_.line_width);
-        painter.setPen(pen);
-
+    void Draw(prac::QPainter& painter) const {
+        painter.setPen(QPen(params_.color, params_.line_width));
+        Point2D end;
         for (int i = 0; i < 6; ++i) {
-            double angle = params_.rotation + 60 * i;
-            Point2D end = DrawRotatedVector(painter, params_.center, angle, params_.size, params_.depth));
-
-            // Рекурсивный вызов для рисования следующей снежинки
-                        if (params_.depth > 0) {
-
-                            SnowFlake nextFlake = GetNextLevelFlake(end);
-                nextFlake.Draw(painter);
-                        }
-        }
-    }*/
-
-    void Draw(QPainter& painter) const {
-        QPen pen(QBrush(params_.color), params_.line_width);
-        painter.setPen(pen);
-
-        for (int i = 0; i < 6; ++i) {
-            double angle = 60 * i + params_.rotation - 90;
-            Point2D end = DrawRotatedVector(painter, params_.center, angle, params_.size);
+            end = DrawRotatedVector(painter, params_.center, params_.rotation + 60 * i, params_.size);
 
             if (params_.depth > 0) {
-                SnowFlake nextSnowflake = GetNextLevelFlake(end);
-                nextSnowflake.Draw(painter);
+                GetNextLevelFlake(end).Draw(painter);
             }
         }
     }
 
-
-
-
-
-
     QString GetDescription() const {
-        return QString("Размер %1\nТолщина линии %2\nПоворот %3\nГлубина %4\nМножитель %5")
+        return QString("Размер %1\nТолщина линии %2\nПоворот %3")
             .arg(params_.size)
             .arg(params_.line_width)
-            .arg(params_.rotation)
-            .arg(params_.depth)
-            .arg(params_.scale_factor);
+            .arg(params_.rotation);
     }
 
+    SnowFlake GetNextLevelFlake(Point2D new_center) const {
+        return SnowFlakeParams{
+            .center = new_center,
+            .color = params_.color,
+            .size = params_.size * params_.scale_factor,
+            .line_width = params_.line_width,
+            .rotation = params_.rotation,
+            .depth = params_.depth - 1,
+            .scale_factor = params_.scale_factor
+        };
+    }
 
 private:
     static Point2D DrawRotatedVector(prac::QPainter& painter, Point2D center, double angle, double length) {
         Vector2D lay = RotateVector(Vector2D{length, 0}, angle);
         Point2D end = Add(center, lay);
 
-        // Нарисуйте линию от точки center до точки end.
-        // Используйте метод drawLine класса painter.
-QLine line(center.x, center.y, lay.x, lay.y);
-        painter.drawLine(QPointF(center.x, center.y), QPointF(end.x, end.y));
+        QPointF start(center.x, center.y);
+        QPointF stop(end.x, end.y);
+        painter.drawLine(start, stop);
 
         return end;
-    } 
-
-     SnowFlake GetNextLevelFlake(Point2D new_center) const {
-        return SnowFlakeParams{
-            .center = new_center,
-            .depth = params_.depth - 1,
-            .scale_factor = params_.scale_factor,
-            .color = params_.color,
-            .size = params_.size * params_.scale_factor,
-            .line_width = params_.line_width,
-            .rotation = params_.rotation
-        };
     }
 
 private:
     SnowFlakeParams params_;
-
-
-
 };
 
 class WinterWindow : public QMainWindow
@@ -148,9 +111,9 @@ public:
 
 private slots:
     void on_btn_color_clicked();
-    void on_sld();
-
     void on_spin_depth_valueChanged(int arg1);
+
+    void on_sld_factor_valueChanged(int value);
 
 private:
     void paintEvent(QPaintEvent *event) override;

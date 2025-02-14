@@ -84,7 +84,7 @@ public:
         centralwidget->setObjectName("centralwidget");
         verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName("verticalLayout");
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         verticalLayout->addItem(verticalSpacer);
 
@@ -93,20 +93,16 @@ public:
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
 
-        horizontalLayout->addWidget(label_2, 0, Qt::AlignVCenter);
+        horizontalLayout->addWidget(label_2, 0, Qt::AlignmentFlag::AlignVCenter);
 
         sld_size = new QSlider(centralwidget);
         sld_size->setObjectName("sld_size");
-        sld_size->setEnabled(true);
-        sld_size->setMinimumSize(QSize(0, 15));
         sld_size->setMinimum(1);
         sld_size->setMaximum(250);
         sld_size->setValue(100);
-        sld_size->setOrientation(Qt::Horizontal);
-        sld_size->setTickPosition(QSlider::NoTicks);
-        sld_size->setTickInterval(0);
+        sld_size->setOrientation(Qt::Orientation::Horizontal);
 
-        horizontalLayout->addWidget(sld_size, 0, Qt::AlignVCenter);
+        horizontalLayout->addWidget(sld_size, 0, Qt::AlignmentFlag::AlignVCenter);
 
         label = new QLabel(centralwidget);
         label->setObjectName("label");
@@ -115,11 +111,10 @@ public:
 
         sld_line = new QSlider(centralwidget);
         sld_line->setObjectName("sld_line");
-        sld_line->setMinimumSize(QSize(0, 15));
         sld_line->setMinimum(1);
         sld_line->setMaximum(50);
         sld_line->setValue(5);
-        sld_line->setOrientation(Qt::Horizontal);
+        sld_line->setOrientation(Qt::Orientation::Horizontal);
 
         horizontalLayout->addWidget(sld_line);
 
@@ -130,12 +125,10 @@ public:
 
         sld_factor = new QSlider(centralwidget);
         sld_factor->setObjectName("sld_factor");
-        sld_factor->setMinimumSize(QSize(0, 15));
-        sld_factor->setMaximum(10);
-        sld_factor->setSingleStep(1);
-        sld_factor->setPageStep(1);
-        sld_factor->setValue(0);
-        sld_factor->setOrientation(Qt::Horizontal);
+        sld_factor->setMinimum(1);
+        sld_factor->setMaximum(5);
+        sld_factor->setOrientation(Qt::Orientation::Horizontal);
+        sld_factor->setTickInterval(0);
 
         horizontalLayout->addWidget(sld_factor);
 
@@ -146,21 +139,18 @@ public:
 
         spin_depth = new QSpinBox(centralwidget);
         spin_depth->setObjectName("spin_depth");
-        spin_depth->setMinimum(1);
-        spin_depth->setMaximum(5);
 
         horizontalLayout->addWidget(spin_depth);
 
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName("label_5");
 
-        horizontalLayout->addWidget(label_5, 0, Qt::AlignVCenter);
+        horizontalLayout->addWidget(label_5, 0, Qt::AlignmentFlag::AlignVCenter);
 
         sld_rotation = new QSlider(centralwidget);
         sld_rotation->setObjectName("sld_rotation");
-        sld_rotation->setMinimumSize(QSize(0, 15));
         sld_rotation->setMaximum(360);
-        sld_rotation->setOrientation(Qt::Horizontal);
+        sld_rotation->setOrientation(Qt::Orientation::Horizontal);
 
         horizontalLayout->addWidget(sld_rotation);
 
@@ -188,7 +178,7 @@ public:
         label_2->setText(QCoreApplication::translate("WinterWindow", "\320\240\320\260\320\267\320\274\320\265\321\200", nullptr));
         label->setText(QCoreApplication::translate("WinterWindow", "\320\242\320\276\320\273\321\211\320\270\320\275\320\260", nullptr));
         label_3->setText(QCoreApplication::translate("WinterWindow", "\320\234\320\275\320\276\320\266\320\270\321\202\320\265\320\273\321\214", nullptr));
-        label_4->setText(QCoreApplication::translate("WinterWindow", "\320\263\320\273\321\203\320\261\320\270\320\275\320\260", nullptr));
+        label_4->setText(QCoreApplication::translate("WinterWindow", "\320\223\320\273\321\203\320\261\320\270\320\275\320\260", nullptr));
         label_5->setText(QCoreApplication::translate("WinterWindow", "\320\222\321\200\320\260\321\211\320\265\320\275\320\270\320\265", nullptr));
         btn_color->setText(QCoreApplication::translate("WinterWindow", "\320\246\320\262\320\265\321\202", nullptr));
     } // retranslateUi

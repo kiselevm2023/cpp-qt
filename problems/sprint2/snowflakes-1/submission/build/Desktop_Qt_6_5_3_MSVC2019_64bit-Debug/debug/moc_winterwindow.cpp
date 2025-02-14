@@ -41,19 +41,21 @@ static constexpr auto qt_meta_stringdata_CLASSWinterWindowENDCLASS = QtMocHelper
     "WinterWindow",
     "on_btn_color_clicked",
     "",
-    "on_sld",
     "on_spin_depth_valueChanged",
-    "arg1"
+    "arg1",
+    "on_sld_factor_valueChanged",
+    "value"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSWinterWindowENDCLASS_t {
-    uint offsetsAndSizes[12];
+    uint offsetsAndSizes[14];
     char stringdata0[13];
     char stringdata1[21];
     char stringdata2[1];
-    char stringdata3[7];
-    char stringdata4[27];
-    char stringdata5[5];
+    char stringdata3[27];
+    char stringdata4[5];
+    char stringdata5[27];
+    char stringdata6[6];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSWinterWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -62,16 +64,18 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSWinterWindowENDCLASS_t qt_meta_
         QT_MOC_LITERAL(0, 12),  // "WinterWindow"
         QT_MOC_LITERAL(13, 20),  // "on_btn_color_clicked"
         QT_MOC_LITERAL(34, 0),  // ""
-        QT_MOC_LITERAL(35, 6),  // "on_sld"
-        QT_MOC_LITERAL(42, 26),  // "on_spin_depth_valueChanged"
-        QT_MOC_LITERAL(69, 4)   // "arg1"
+        QT_MOC_LITERAL(35, 26),  // "on_spin_depth_valueChanged"
+        QT_MOC_LITERAL(62, 4),  // "arg1"
+        QT_MOC_LITERAL(67, 26),  // "on_sld_factor_valueChanged"
+        QT_MOC_LITERAL(94, 5)   // "value"
     },
     "WinterWindow",
     "on_btn_color_clicked",
     "",
-    "on_sld",
     "on_spin_depth_valueChanged",
-    "arg1"
+    "arg1",
+    "on_sld_factor_valueChanged",
+    "value"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -92,13 +96,13 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSWinterWindowENDCLASS[] = {
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
        1,    0,   32,    2, 0x08,    1 /* Private */,
-       3,    0,   33,    2, 0x08,    2 /* Private */,
-       4,    1,   34,    2, 0x08,    3 /* Private */,
+       3,    1,   33,    2, 0x08,    2 /* Private */,
+       5,    1,   36,    2, 0x08,    4 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    5,
+    QMetaType::Void, QMetaType::Int,    4,
+    QMetaType::Void, QMetaType::Int,    6,
 
        0        // eod
 };
@@ -114,9 +118,10 @@ Q_CONSTINIT const QMetaObject WinterWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<WinterWindow, std::true_type>,
         // method 'on_btn_color_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_sld'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_spin_depth_valueChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'on_sld_factor_valueChanged'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>
     >,
@@ -130,8 +135,8 @@ void WinterWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         (void)_t;
         switch (_id) {
         case 0: _t->on_btn_color_clicked(); break;
-        case 1: _t->on_sld(); break;
-        case 2: _t->on_spin_depth_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 1: _t->on_spin_depth_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 2: _t->on_sld_factor_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     }

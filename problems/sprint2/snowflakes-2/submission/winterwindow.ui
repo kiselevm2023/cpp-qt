@@ -181,7 +181,7 @@
     <item>
      <spacer name="verticalSpacer">
       <property name="orientation">
-       <enum>Qt::Vertical</enum>
+       <enum>Qt::Orientation::Vertical</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
@@ -193,24 +193,15 @@
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
-      <item alignment="Qt::AlignVCenter">
+      <item alignment="Qt::AlignmentFlag::AlignVCenter">
        <widget class="QLabel" name="label_2">
         <property name="text">
          <string>Размер</string>
         </property>
        </widget>
       </item>
-      <item alignment="Qt::AlignVCenter">
+      <item alignment="Qt::AlignmentFlag::AlignVCenter">
        <widget class="QSlider" name="sld_size">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>15</height>
-         </size>
-        </property>
         <property name="minimum">
          <number>1</number>
         </property>
@@ -221,13 +212,7 @@
          <number>100</number>
         </property>
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="tickPosition">
-         <enum>QSlider::NoTicks</enum>
-        </property>
-        <property name="tickInterval">
-         <number>0</number>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -240,12 +225,6 @@
       </item>
       <item>
        <widget class="QSlider" name="sld_line">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>15</height>
-         </size>
-        </property>
         <property name="minimum">
          <number>1</number>
         </property>
@@ -256,7 +235,7 @@
          <number>5</number>
         </property>
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -269,47 +248,31 @@
       </item>
       <item>
        <widget class="QSlider" name="sld_factor">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>15</height>
-         </size>
-        </property>
-        <property name="maximum">
-         <number>10</number>
-        </property>
-        <property name="singleStep">
-         <number>1</number>
-        </property>
-        <property name="pageStep">
-         <number>1</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>глубина</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="spin_depth">
         <property name="minimum">
          <number>1</number>
         </property>
         <property name="maximum">
          <number>5</number>
         </property>
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="tickInterval">
+         <number>0</number>
+        </property>
        </widget>
       </item>
-      <item alignment="Qt::AlignVCenter">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Глубина</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spin_depth"/>
+      </item>
+      <item alignment="Qt::AlignmentFlag::AlignVCenter">
        <widget class="QLabel" name="label_5">
         <property name="text">
          <string>Вращение</string>
@@ -318,17 +281,11 @@
       </item>
       <item>
        <widget class="QSlider" name="sld_rotation">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>15</height>
-         </size>
-        </property>
         <property name="maximum">
          <number>360</number>
         </property>
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
       </item>

@@ -40,14 +40,22 @@ struct qt_meta_stringdata_CLASSWinterWindowENDCLASS_t {};
 static constexpr auto qt_meta_stringdata_CLASSWinterWindowENDCLASS = QtMocHelpers::stringData(
     "WinterWindow",
     "on_btn_color_clicked",
-    ""
+    "",
+    "on_spin_depth_valueChanged",
+    "arg1",
+    "on_sld_factor_valueChanged",
+    "value"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSWinterWindowENDCLASS_t {
-    uint offsetsAndSizes[6];
+    uint offsetsAndSizes[14];
     char stringdata0[13];
     char stringdata1[21];
     char stringdata2[1];
+    char stringdata3[27];
+    char stringdata4[5];
+    char stringdata5[27];
+    char stringdata6[6];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSWinterWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -55,11 +63,19 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSWinterWindowENDCLASS_t qt_meta_
     {
         QT_MOC_LITERAL(0, 12),  // "WinterWindow"
         QT_MOC_LITERAL(13, 20),  // "on_btn_color_clicked"
-        QT_MOC_LITERAL(34, 0)   // ""
+        QT_MOC_LITERAL(34, 0),  // ""
+        QT_MOC_LITERAL(35, 26),  // "on_spin_depth_valueChanged"
+        QT_MOC_LITERAL(62, 4),  // "arg1"
+        QT_MOC_LITERAL(67, 26),  // "on_sld_factor_valueChanged"
+        QT_MOC_LITERAL(94, 5)   // "value"
     },
     "WinterWindow",
     "on_btn_color_clicked",
-    ""
+    "",
+    "on_spin_depth_valueChanged",
+    "arg1",
+    "on_sld_factor_valueChanged",
+    "value"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -71,7 +87,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSWinterWindowENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -79,10 +95,14 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSWinterWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x08,    1 /* Private */,
+       1,    0,   32,    2, 0x08,    1 /* Private */,
+       3,    1,   33,    2, 0x08,    2 /* Private */,
+       5,    1,   36,    2, 0x08,    4 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    4,
+    QMetaType::Void, QMetaType::Int,    6,
 
        0        // eod
 };
@@ -97,7 +117,13 @@ Q_CONSTINIT const QMetaObject WinterWindow::staticMetaObject = { {
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<WinterWindow, std::true_type>,
         // method 'on_btn_color_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_spin_depth_valueChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'on_sld_factor_valueChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>
     >,
     nullptr
 } };
@@ -109,10 +135,11 @@ void WinterWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         (void)_t;
         switch (_id) {
         case 0: _t->on_btn_color_clicked(); break;
+        case 1: _t->on_spin_depth_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 2: _t->on_sld_factor_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *WinterWindow::metaObject() const
@@ -134,13 +161,13 @@ int WinterWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 3;
     }
     return _id;
 }
