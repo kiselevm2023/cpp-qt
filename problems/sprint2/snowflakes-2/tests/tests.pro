@@ -33,4 +33,3 @@ HEADERS +=  \
 
 FORMS += \
     $$SUBMISSION_PATH/winterwindow.ui
-
